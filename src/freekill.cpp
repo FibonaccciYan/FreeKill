@@ -396,12 +396,18 @@ int freekill_main(int argc, char *argv[]) {
 #endif
 
   QTranslator translator;
+  auto loadTranslation = [&](const QString &name) {
+    if (translator.load(name)) return true;
+    auto exe_dir = QCoreApplication::applicationDirPath();
+    if (translator.load(exe_dir + "/" + name)) return true;
+    return false;
+  };
   if (localeName.startsWith("zh_")) {
-    Q_UNUSED(translator.load("zh_CN.qm"));
+    Q_UNUSED(loadTranslation("zh_CN.qm"));
   } else if (localeName.startsWith("vi")) {
-    Q_UNUSED(translator.load("vi_VN.qm"));
+    Q_UNUSED(loadTranslation("vi_VN.qm"));
   } else {
-    Q_UNUSED(translator.load("en_US.qm"));
+    Q_UNUSED(loadTranslation("en_US.qm"));
   }
   QCoreApplication::installTranslator(&translator);
 

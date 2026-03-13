@@ -33,6 +33,7 @@ _, Weapon, Armor, DefensiveRide, OffensiveRide, Treasure = table.unpack(Equip)
 ---@param skill SkillSkeleton|Skill
 ---@param spec table
 function fk.readCommonSpecToSkill(skill, spec)
+  spec = spec or Util.DummyTable
   skill.mute = spec.mute
   skill.no_indicate = spec.no_indicate
   skill.anim_type = spec.anim_type
@@ -50,6 +51,7 @@ function fk.readCommonSpecToSkill(skill, spec)
 end
 
 function fk.readUsableSpecToSkill(skill, spec)
+  spec = spec or Util.DummyTable
   fk.readCommonSpecToSkill(skill, spec)
   assert(spec.main_skill == nil or spec.main_skill:isInstanceOf(UsableSkill))
   if type(spec.derived_piles) == "string" then
@@ -84,6 +86,7 @@ function fk.readUsableSpecToSkill(skill, spec)
 end
 
 function fk.readStatusSpecToSkill(skill, spec)
+  spec = spec or Util.DummyTable
   fk.readCommonSpecToSkill(skill, spec)
   if spec.global then
     skill.global = spec.global

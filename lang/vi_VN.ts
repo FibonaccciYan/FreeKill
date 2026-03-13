@@ -247,6 +247,10 @@
     <translation>&lt;font color="red" size="4">&lt;b>!! v%1&lt;/b>&lt;/font></translation>
   </message>
   <message>
+    <source>@VersionMatch</source>
+    <translation>&lt;font color="green" size="4">&lt;b>✓ v%1&lt;/b>&lt;/font></translation>
+  </message>
+  <message>
     <source>Server not up</source>
     <translation>Máy chủ dường như không hoạt động.</translation>
   </message>

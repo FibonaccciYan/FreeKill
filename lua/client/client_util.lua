@@ -9,6 +9,21 @@ end
 function GetGeneralData(name)
   local general = Fk.generals[name]
   if general == nil then general = Fk.generals["diaochan"] end
+  if general == nil then
+    return {
+      package = "",
+      extension = "",
+      kingdom = "",
+      subkingdom = "",
+      hp = 0,
+      maxHp = 0,
+      mainMaxHpAdjustedValue = 0,
+      deputyMaxHpAdjustedValue = 0,
+      shield = 0,
+      hidden = false,
+      total_hidden = false,
+    }
+  end
   return {
     package = general.package.name,
     extension = general.package.extensionName,
@@ -27,6 +42,22 @@ end
 function GetGeneralDetail(name)
   local general = Fk.generals[name]
   if general == nil then general = Fk.generals["diaochan"] end
+  if general == nil then
+    return {
+      package = "",
+      extension = "",
+      kingdom = "",
+      hp = 0,
+      maxHp = 0,
+      mainMaxHp = 0,
+      deputyMaxHp = 0,
+      gender = "",
+      skill = {},
+      companions = {},
+      headnote = "",
+      endnote = "",
+    }
+  end
   local ret = {
     package = general.package.name,
     extension = general.package.extensionName,
